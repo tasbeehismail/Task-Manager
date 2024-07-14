@@ -6,7 +6,7 @@ import { sendOTP, verifyOTP as verify } from '../services/otp.service.js';
 import verifyEmailTemplate from '../view/emailTemplate.js';
 /**
  * @description Signup a new user
- * @route POST /user/signup
+ * @route POST /auth/signup
  * @access Public
  * @param {object} req - Express request object containing user details
  * @param {object} res - Express response object
@@ -30,7 +30,7 @@ export const signup = async (req, res, next) => {
 }
 /**
  * @description Login a user
- * @route POST /user/login
+ * @route POST /auth/login
  * @access Public
  * @param {object} req - Express request object containing login details
  * @param {object} res - Express response object
@@ -58,7 +58,7 @@ export const login = async (req, res, next) => {
 }
 /**
  * @description Verify user's email
- * @route POST /user/verify-email
+ * @route POST /auth/verify-email
  * @access Public
  * @param {object} req - Express request object containing email and OTP
  * @param {object} res - Express response object
