@@ -6,7 +6,7 @@ import AppError from "../utils/appError.js";
 
 const app = Router();
 
-app.use('/users', userRouter);
+app.use('/auth', userRouter);
 app.use('/tasks', taskRouter);
 app.use('/categories', categoryRouter)
 
