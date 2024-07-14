@@ -13,7 +13,7 @@ router.post('/add',
     asyncHandler(categoryController.addCategory)
 );
 
-router.get('/all', 
+router.get('/', 
     verifyToken(), 
     asyncHandler(categoryController.getCategories)
 );
