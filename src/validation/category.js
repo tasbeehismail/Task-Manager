@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const category = Joi.object({
+const addCategory = Joi.object({
   name: Joi.string()
     .min(3)
     .max(255)
@@ -33,5 +33,25 @@ const idCategory = Joi.object({
     }),
 });
 
+const updateCategory = Joi.object({
+  id: Joi.string()  
+    .pattern(/^[0-9a-fA-F]{24}$/)
+    .required()
+    .messages({
+      'string.empty': 'Category ID cannot be empty',
+      'any.required': 'Category ID is required',
+      'string.pattern.base': 'Category ID is invalid',
+    }),
+  name: Joi.string()
+    .min(3)
+    .max(255)
+    .lowercase()
+    .messages({
+      'string.base': 'Category name should be a type of text',
+      'string.empty': 'Category name cannot be empty',
+      'string.min': 'Category name should have a minimum length of {#limit}',
+      'string.max': 'Category name should have a maximum length of {#limit}',
+    }),
+});
 
-export { category, idCategory };
+export { addCategory, idCategory, updateCategory };
