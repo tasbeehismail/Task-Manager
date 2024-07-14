@@ -13,13 +13,13 @@ router.post('/create',
     asyncHandler(taskController.createTask)
 );
 
-router.get('/list', 
-    verifyToken(), 
-    asyncHandler(taskController.list)
+router.get('/', 
+    verifyToken({ isOptional: true }),
+    asyncHandler(taskController.getTasks)
 );
 
 router.get('/:id', 
-    verifyToken(), 
+    verifyToken({ isOptional: true }),
     validate(schema.getTask), 
     asyncHandler(taskController.getTask)
 );

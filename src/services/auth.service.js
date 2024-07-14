@@ -20,12 +20,14 @@ export const generateToken = (payload, secret = process.env.JWT_SECRET, expiresI
  * @returns {Function} - The middleware function.
  */
 
-export const verifyToken =  (secret = process.env.JWT_SECRET, isBearer = false) => {
+export const verifyToken =  ({ secret = process.env.JWT_SECRET, isBearer = false, isOptional = false} = {}) => {
   return async (req, res, next) => {
 
       const header = req.headers.authorization || req.headers.token;
-      
-      if (!header) {
+
+      if(!header && isOptional) return next();
+
+      if (!header && !isOptional) {
         throw next(new AppError('Authorization header is required', 401));
       }
       // Check if the token is a Bearer token
@@ -40,6 +42,7 @@ export const verifyToken =  (secret = process.env.JWT_SECRET, isBearer = false) 
           const decoded = jwt.verify(token, secret);
           // Attach the user to the request
           req.user = await User.findById(decoded.id);
+          if(!req.user) throw next(new AppError('User not found', 401));
           next();
       } catch (error) {
           throw next(new AppError('Invalid or expired token', 401));
