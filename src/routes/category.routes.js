@@ -9,7 +9,7 @@ const router = Router();
 
 router.post('/add', 
     verifyToken(), 
-    validate(schema.addCategory), 
+    validate(schema.category), 
     asyncHandler(categoryController.addCategory)
 );
 
@@ -20,19 +20,19 @@ router.get('/all',
 
 router.get('/:id', 
     verifyToken(), 
-    validate(schema.getCategory), 
+    validate(schema.idCategory), 
     asyncHandler(categoryController.getCategory)
 );
 
 router.patch('/update/:id', 
     verifyToken(), 
-    validate(schema.updateCategory), 
+    validate(schema.category), 
     asyncHandler(categoryController.updateCategory)
 );  
 
 router.delete('/delete/:id', 
     verifyToken(), 
-    validate(schema.deleteCategory), 
+    validate(schema.idCategory), 
     asyncHandler(categoryController.deleteCategory)
 );
 
