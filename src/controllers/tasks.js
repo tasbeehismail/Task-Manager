@@ -20,10 +20,10 @@ export const getTasks = async (req, res, next) => {
     // If user is authenticated
     if (req.user) {
         // show tasks created by the user and the tasks shared with the user
-        filter['$or'] = [{ user_id: req.user._id }, { shared: shared === 'true' }];
+        filter['$or'] = [{ user_id: req.user._id }, { shared: shared === 'public' }];
     } else {
         // If the user is unauthenticated, only show shared tasks
-        filter['shared'] = shared === 'true';
+        filter['shared'] = shared === 'public';
     }
 
     // 2- By category name
