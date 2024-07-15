@@ -20,7 +20,7 @@ router.get('/',
 
 router.get('/:id', 
     verifyToken({ isOptional: true }),
-    validate(schema.getTask), 
+    validate(schema.idTask), 
     asyncHandler(taskController.getTask)
 );
 
@@ -32,7 +32,7 @@ router.patch('/update/:id',
 
 router.delete('/delete/:id', 
     verifyToken(), 
-    validate(schema.deleteTask), 
+    validate(schema.idTask), 
     asyncHandler(taskController.deleteTask)
 );
 

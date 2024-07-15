@@ -79,6 +79,7 @@ export const getTasks = async (req, res, next) => {
 }
 
 export const getTask = async (req, res, next) => {
+    const filter = {};
     if (req.user) {
         filter['$or'] = [{ user_id: req.user._id }, { shared: true }];
     } else {
@@ -89,7 +90,7 @@ export const getTask = async (req, res, next) => {
     
     const task = await Task.findOne({ _id: id, ...filter }).populate('category_id', 'name');
     if (!task) {
-        return next(new AppError('Task not found', 404));
+        return next(new AppError('Task not found or unauthorized access', 404));
     }
     res.status(200).json({ data: task });
 }

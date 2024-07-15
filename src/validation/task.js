@@ -46,5 +46,14 @@ const createTask = Joi.object({
       'any.required': 'Category ID is required',
     })
 });
-
-export { createTask };
+const idTask = Joi.object({
+  id: Joi.string()
+    .pattern(/^[0-9a-fA-F]{24}$/)
+    .required()
+    .messages({
+      'string.empty': 'Task ID cannot be empty',
+      'any.required': 'Task ID is required',
+      'string.pattern.base': 'Task ID is invalid',
+    }),
+});
+export { createTask, idTask };
