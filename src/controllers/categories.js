@@ -28,7 +28,7 @@ export const getCategory = async (req, res, next) => {
     const { id } = req.params;
     const category = await Category.findOne({ _id: id, user_id });
     if (!category) {
-        return next(new AppError('Category not found', 404));
+        return next(new AppError('Category not found or unauthorized access', 404));
     }
     res.status(200).json({ data: category });
 }
@@ -39,7 +39,7 @@ export const updateCategory = async (req, res, next) => {
     const { name } = req.body;
     const category = await Category.findOneAndUpdate({ _id: id, user_id }, { name }, { new: true });
     if (!category) {
-        return next(new AppError('Category not found', 404));
+        return next(new AppError('Category not found or unauthorized access', 404));
     }
     res.status(200).json({ message: 'Category updated successfully', data: category });
 }
@@ -49,7 +49,7 @@ export const deleteCategory = async (req, res, next) => {
     const { id } = req.params;
     const category = await Category.findOneAndDelete({ _id: id, user_id });
     if (!category) {
-        return next(new AppError('Category not found', 404));
+        return next(new AppError('Category not found or unauthorized access', 404));
     }
     res.status(200).json({ message: 'Category deleted successfully' });
 }
