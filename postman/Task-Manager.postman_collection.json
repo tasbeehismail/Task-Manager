@@ -1,0 +1,2389 @@
+{
+	"info": {
+		"_postman_id": "a2ab887e-e4a9-44ec-9783-d34676197853",
+		"name": "Task Manager",
+		"description": "A RESTful API application that allows users to manage their tasks efficiently. Tasks can be organized into categories, and users can differentiate tasks based on their types (Text or List). The API supports user authentication via basic HTTP authentication and includes features for creating, reading, updating, and deleting categories and tasks. Additionally, tasks can be shared with all users or kept private. The application also provides functionality for pagination, filtering, and sorting tasks to enhance task management and accessibility.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34627138"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Tasbeeh\",\n    \"lastName\": \"Ismail\",\n    \"email\": \"tsbeehismaill@gmail.com\",\n    \"password\": \"tas123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Tasbeeh\",\n    \"lastName\": \"Ismail\",\n    \"email\": \"tsbeehismaill@gmail.com\",\n    \"password\": \"tas123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "290"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"122-A3nXvytztSrm5KbKFcjJPG7N3qQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 06:33:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully. Verification email sent.\",\n    \"data\": {\n        \"firstName\": \"Tasbeeh\",\n        \"lastName\": \"Ismail\",\n        \"email\": \"tsbeehismaill@gmail.com\",\n        \"confirmEmail\": false,\n        \"_id\": \"66937139ff02b51ddc91474c\",\n        \"createdAt\": \"2024-07-14T06:33:29.551Z\",\n        \"updatedAt\": \"2024-07-14T06:33:29.567Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tsbeehismaill@gmail.com\",\n    \"otp\": \"5785\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/verify-email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tsbeehismaill@gmail.com\",\n    \"otp\": \"9918\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/verify-email",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"verify-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-gmemsCpNdXZC5ApWNn/ZciPyh/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 06:35:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OTP verified successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"anasismaill@gmail.com\",\n    \"password\": \"anas123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"tsbeehismaill@gmail.com\",\n    \"password\": \"tas123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "296"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"128-JyK6vEtYO9Ienc0uXaseKkt8SyU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 06:36:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User logged in successfully\",\n    \"Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3MTM5ZmYwMmI1MWRkYzkxNDc0YyIsImVtYWlsIjoidHNiZWVoaXNtYWlsbEBnbWFpbC5jb20iLCJ0b2tlblR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3MjA5Mzg5NjMsImV4cCI6MTcyMzcwMzc2M30.NxdrivZG3oiwUkNp_MnDl7RFVP8CBtR2xBkL3aOPWKw\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{tasbeeh-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Evening run\",\n    \"type\": \"Text\",\n    \"text_body\": \"Run for one hour in the park.\",\n    \"shared\": true,\n    \"category_id\": \"66945565fb90c2010a24f653\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NzY2OWZhMDhhN2E2ZjYyMzBmMiIsImVtYWlsIjoidHNiZWVoaXNtYWlsbEBnbWFpbC5jb20iLCJ0b2tlblR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3MjA5NDA0MTQsImV4cCI6MTcyMzcwNTIxNH0.GbVyZ8lUyd3f3zSWzj-AuP46JHoyf1DGEPifSGhA-yc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "270"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10e-flkdHxe2uUWsdgukP4/a2ottwzI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 07:03:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation error\",\n    \"code\": 400,\n    \"success\": false,\n    \"data\": [\n        {\n            \"field\": \"title\",\n            \"message\": \"Title is required\"\n        },\n        {\n            \"field\": \"type\",\n            \"message\": \"Type is required\"\n        },\n        {\n            \"field\": \"category_id\",\n            \"message\": \"Category ID is required\"\n        },\n        {\n            \"field\": \"user_id\",\n            \"message\": \"User ID is required\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Morning run\",\n    \"type\": \"Text\",\n    \"text_body\": \"Run 5km in the park.\",\n    \"shared\": true,\n    \"category_id\": \"66945809fb90c2010a24f67b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/tasks/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "346"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15a-OV3tRf/hPnSPuPubM0hro8uhQN8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 23:01:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task created successfully\",\n    \"data\": {\n        \"title\": \"Morning run\",\n        \"type\": \"Text\",\n        \"text_body\": \"Run 5km in the park.\",\n        \"list_items\": [],\n        \"shared\": true,\n        \"category_id\": \"66945809fb90c2010a24f67b\",\n        \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n        \"_id\": \"669458ccfb90c2010a24f68a\",\n        \"createdAt\": \"2024-07-14T23:01:32.502Z\",\n        \"updatedAt\": \"2024-07-14T23:01:32.502Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{anas-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful - Filtering",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NTg0YzZkNGE3ZThjNmRjNjk5MSIsImVtYWlsIjoiYW5hc2lzbWFpbGxAZ21haWwuY29tIiwidG9rZW5UeXBlIjoiYWNjZXNzIiwiaWF0IjoxNzIwOTk3ODA2LCJleHAiOjE3MjM3NjI2MDZ9.p3PxDxkMdozsvgMLGIxJiZdJBt7lD1vIvr7lHRc6KPo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/?category=Personal",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										""
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "Personal"
+										},
+										{
+											"key": "shared",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "676"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a4-pulznlgJc64yjdwD4+ClxWEWuDQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:03:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"6694587cfb90c2010a24f684\",\n            \"title\": \"Clean the house\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Vacuum the living room\",\n                \"Dust the shelves\",\n                \"Mop the kitchen floor\"\n            ],\n            \"shared\": true,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T23:00:12.062Z\",\n            \"updatedAt\": \"2024-07-14T23:00:12.062Z\",\n            \"category\": {\n                \"_id\": \"66945809fb90c2010a24f67b\",\n                \"name\": \"Personal\"\n            }\n        },\n        {\n            \"_id\": \"669458ccfb90c2010a24f68a\",\n            \"title\": \"Morning run\",\n            \"type\": \"Text\",\n            \"text_body\": \"Run 5km in the park.\",\n            \"list_items\": [],\n            \"shared\": true,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T23:01:32.502Z\",\n            \"updatedAt\": \"2024-07-14T23:01:32.502Z\",\n            \"category\": {\n                \"_id\": \"66945809fb90c2010a24f67b\",\n                \"name\": \"Personal\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Successful - Pagination",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/?page=2&limit=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1074"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"432-vPKwKVpRQDDwlwVPOtB6Z/kLIR4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:06:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"6694589dfb90c2010a24f687\",\n            \"title\": \"Buy groceries for the week\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Vegetables\",\n                \"Fruits\",\n                \"Cereal\",\n                \"Juice\"\n            ],\n            \"shared\": false,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T23:00:45.407Z\",\n            \"updatedAt\": \"2024-07-14T23:00:45.407Z\",\n            \"category\": {\n                \"_id\": \"66945812fb90c2010a24f67e\",\n                \"name\": \"Shopping\"\n            }\n        },\n        {\n            \"_id\": \"66945674fb90c2010a24f666\",\n            \"title\": \"Plan vacation itinerary\",\n            \"type\": \"Text\",\n            \"text_body\": \"Research destinations, book flights, and plan activities for the upcoming vacation.\",\n            \"list_items\": [],\n            \"shared\": false,\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T22:51:32.661Z\",\n            \"updatedAt\": \"2024-07-14T22:51:32.661Z\",\n            \"category\": {\n                \"_id\": \"6694556cfb90c2010a24f656\",\n                \"name\": \"Shopping\"\n            }\n        },\n        {\n            \"_id\": \"669456b0fb90c2010a24f66f\",\n            \"title\": \"Buy birthday gift\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Research gift ideas\",\n                \"Visit stores\",\n                \"Purchase gift\"\n            ],\n            \"shared\": false,\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T22:52:32.654Z\",\n            \"updatedAt\": \"2024-07-14T22:52:32.654Z\",\n            \"category\": {\n                \"_id\": \"6694556cfb90c2010a24f656\",\n                \"name\": \"Shopping\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Successful - Sorting",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/?order=desc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2820"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b04-FFqB/Uz59uEI+iALduXYT10TgrU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:09:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"66945655fb90c2010a24f660\",\n            \"title\": \"Finish project report\",\n            \"type\": \"Text\",\n            \"text_body\": \"Complete the final report for the project by the end of the week.\",\n            \"list_items\": [],\n            \"shared\": false,\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T22:51:01.963Z\",\n            \"updatedAt\": \"2024-07-14T22:51:01.963Z\",\n            \"category\": {\n                \"_id\": \"6694553ffb90c2010a24f650\",\n                \"name\": \"Work\"\n            }\n        },\n        {\n            \"_id\": \"6694585efb90c2010a24f681\",\n            \"title\": \"Prepare presentation slides\",\n            \"type\": \"Text\",\n            \"text_body\": \"Create slides for the upcoming team meeting.\",\n            \"list_items\": [],\n            \"shared\": false,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T22:59:42.201Z\",\n            \"updatedAt\": \"2024-07-14T22:59:42.201Z\",\n            \"category\": {\n                \"_id\": \"669457bdfb90c2010a24f678\",\n                \"name\": \"Work\"\n            }\n        },\n        {\n            \"_id\": \"66945674fb90c2010a24f666\",\n            \"title\": \"Plan vacation itinerary\",\n            \"type\": \"Text\",\n            \"text_body\": \"Research destinations, book flights, and plan activities for the upcoming vacation.\",\n            \"list_items\": [],\n            \"shared\": false,\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T22:51:32.661Z\",\n            \"updatedAt\": \"2024-07-14T22:51:32.661Z\",\n            \"category\": {\n                \"_id\": \"6694556cfb90c2010a24f656\",\n                \"name\": \"Shopping\"\n            }\n        },\n        {\n            \"_id\": \"669456b0fb90c2010a24f66f\",\n            \"title\": \"Buy birthday gift\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Research gift ideas\",\n                \"Visit stores\",\n                \"Purchase gift\"\n            ],\n            \"shared\": false,\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T22:52:32.654Z\",\n            \"updatedAt\": \"2024-07-14T22:52:32.654Z\",\n            \"category\": {\n                \"_id\": \"6694556cfb90c2010a24f656\",\n                \"name\": \"Shopping\"\n            }\n        },\n        {\n            \"_id\": \"6694589dfb90c2010a24f687\",\n            \"title\": \"Buy groceries for the week\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Vegetables\",\n                \"Fruits\",\n                \"Cereal\",\n                \"Juice\"\n            ],\n            \"shared\": false,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T23:00:45.407Z\",\n            \"updatedAt\": \"2024-07-14T23:00:45.407Z\",\n            \"category\": {\n                \"_id\": \"66945812fb90c2010a24f67e\",\n                \"name\": \"Shopping\"\n            }\n        },\n        {\n            \"_id\": \"6694587cfb90c2010a24f684\",\n            \"title\": \"Clean the house\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Vacuum the living room\",\n                \"Dust the shelves\",\n                \"Mop the kitchen floor\"\n            ],\n            \"shared\": true,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T23:00:12.062Z\",\n            \"updatedAt\": \"2024-07-14T23:00:12.062Z\",\n            \"category\": {\n                \"_id\": \"66945809fb90c2010a24f67b\",\n                \"name\": \"Personal\"\n            }\n        },\n        {\n            \"_id\": \"669458ccfb90c2010a24f68a\",\n            \"title\": \"Morning run\",\n            \"type\": \"Text\",\n            \"text_body\": \"Run 5km in the park.\",\n            \"list_items\": [],\n            \"shared\": true,\n            \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n            \"createdAt\": \"2024-07-14T23:01:32.502Z\",\n            \"updatedAt\": \"2024-07-14T23:01:32.502Z\",\n            \"category\": {\n                \"_id\": \"66945809fb90c2010a24f67b\",\n                \"name\": \"Personal\"\n            }\n        },\n        {\n            \"_id\": \"66945682fb90c2010a24f669\",\n            \"title\": \"Create workout routine\",\n            \"type\": \"List\",\n            \"list_items\": [\n                \"Warm-up exercises\",\n                \"Cardio\",\n                \"Strength training\",\n                \"Cool-down stretches\"\n            ],\n            \"shared\": false,\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T22:51:46.395Z\",\n            \"updatedAt\": \"2024-07-14T22:51:46.395Z\",\n            \"category\": {\n                \"_id\": \"66945572fb90c2010a24f659\",\n                \"name\": \"Fitness\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Task By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{anas-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks/6694585efb90c2010a24f681",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"6694585efb90c2010a24f681"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/tasks/66945698fb90c2010a24f66c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"66945698fb90c2010a24f66c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "373"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"175-s2Mov5nztmTMrgnE0VjAL4iRRBI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:15:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"66945698fb90c2010a24f66c\",\n        \"title\": \"Read a new book\",\n        \"type\": \"Text\",\n        \"text_body\": \"Start reading 'The Great Gatsby' by F. Scott Fitzgerald.\",\n        \"list_items\": [],\n        \"shared\": true,\n        \"category_id\": {\n            \"_id\": \"66945577fb90c2010a24f65c\",\n            \"name\": \"Hobbies\"\n        },\n        \"user_id\": \"669377669fa08a7a6f6230f2\",\n        \"createdAt\": \"2024-07-14T22:52:08.780Z\",\n        \"updatedAt\": \"2024-07-14T22:52:08.780Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Not Found or Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{tasbeeh-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/tasks/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-ZnfctQGttlCnvg6L2o/rql9Uscc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:17:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Task not found or unauthorized access\",\n    \"code\": 404,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Successful - Owner",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/tasks/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "371"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"173-24eVu3qhmRm8HnMyX1o0rk6Gxg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:19:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"6694585efb90c2010a24f681\",\n        \"title\": \"Prepare presentation slides\",\n        \"type\": \"Text\",\n        \"text_body\": \"Create slides for the upcoming team meeting.\",\n        \"list_items\": [],\n        \"shared\": false,\n        \"category_id\": {\n            \"_id\": \"669457bdfb90c2010a24f678\",\n            \"name\": \"Work\"\n        },\n        \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n        \"createdAt\": \"2024-07-14T22:59:42.201Z\",\n        \"updatedAt\": \"2024-07-14T22:59:42.201Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{tasbeeh-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Search for templete of presentation slides\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tasks/update/6694585efb90c2010a24f681",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"update",
+								"6694585efb90c2010a24f681"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NTg0YzZkNGE3ZThjNmRjNjk5MSIsImVtYWlsIjoiYW5hc2lzbWFpbGxAZ21haWwuY29tIiwidG9rZW5UeXBlIjoiYWNjZXNzIiwiaWF0IjoxNzIwOTk3ODA2LCJleHAiOjE3MjM3NjI2MDZ9.p3PxDxkMdozsvgMLGIxJiZdJBt7lD1vIvr7lHRc6KPo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Search for templete of presentation slides\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/tasks/update/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"update",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "402"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"192-ptdoP26CMuvWN0S5kmPCP2SxCzg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:25:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task updated successfully\",\n    \"data\": {\n        \"_id\": \"6694585efb90c2010a24f681\",\n        \"title\": \"Search for templete of presentation slides\",\n        \"type\": \"Text\",\n        \"text_body\": \"Create slides for the upcoming team meeting.\",\n        \"list_items\": [],\n        \"shared\": false,\n        \"category_id\": \"669457bdfb90c2010a24f678\",\n        \"user_id\": \"66937584c6d4a7e8c6dc6991\",\n        \"createdAt\": \"2024-07-14T22:59:42.201Z\",\n        \"updatedAt\": \"2024-07-15T00:25:07.435Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Unauthorized Access",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{tasbeeh-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Search for templete of presentation slides\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/tasks/update/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"update",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-ZnfctQGttlCnvg6L2o/rql9Uscc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:25:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Task not found or unauthorized access\",\n    \"code\": 404,\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{anas-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/tasks/delete/6694585efb90c2010a24f681",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"delete",
+								"6694585efb90c2010a24f681"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Not LoggedIn",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/delete/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"delete",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-2eshYXD4VO2Fa6F+8EbF1iJrX68\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:27:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Authorization header is required\",\n    \"code\": 401,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Unauthorized Access",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{tasbeeh-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/delete/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"delete",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-ZnfctQGttlCnvg6L2o/rql9Uscc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:27:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Task not found or unauthorized access\",\n    \"code\": 404,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/tasks/delete/6694585efb90c2010a24f681",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tasks",
+										"delete",
+										"6694585efb90c2010a24f681"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-urf4l4W7aUjEqcMghGgrIBDtf0M\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:28:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task deleted successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Add Ctegory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{anas-token}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": 112\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/categories/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3MTM5ZmYwMmI1MWRkYzkxNDc0YyIsImVtYWlsIjoidHNiZWVoaXNtYWlsbEBnbWFpbC5jb20iLCJ0b2tlblR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3MjA5Mzg5NjMsImV4cCI6MTcyMzcwMzc2M30.NxdrivZG3oiwUkNp_MnDl7RFVP8CBtR2xBkL3aOPWKw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"read\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"de-iry53xltr5pNolkdNhe/IrI2bco\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 06:43:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Category created successfully\",\n    \"data\": {\n        \"name\": \"read\",\n        \"user_id\": \"66937139ff02b51ddc91474c\",\n        \"_id\": \"6693737c1f889a47958acea7\",\n        \"createdAt\": \"2024-07-14T06:43:08.361Z\",\n        \"updatedAt\": \"2024-07-14T06:43:08.361Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": 112\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"add"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "132"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"84-gfPHIT2y2Cpq83BmXawmrBHuKSY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:31:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation error\",\n    \"code\": 400,\n    \"success\": false,\n    \"data\": [\n        {\n            \"field\": \"name\",\n            \"message\": \"Category name should be a type of text\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "User Not LoggedIn",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": 112\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"add"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-2eshYXD4VO2Fa6F+8EbF1iJrX68\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:48:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Authorization header is required\",\n    \"code\": 401,\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NzY2OWZhMDhhN2E2ZjYyMzBmMiIsImVtYWlsIjoidHNiZWVoaXNtYWlsbEBnbWFpbC5jb20iLCJ0b2tlblR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3MjA5NDA0MTQsImV4cCI6MTcyMzcwNTIxNH0.GbVyZ8lUyd3f3zSWzj-AuP46JHoyf1DGEPifSGhA-yc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NzY2OWZhMDhhN2E2ZjYyMzBmMiIsImVtYWlsIjoidHNiZWVoaXNtYWlsbEBnbWFpbC5jb20iLCJ0b2tlblR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3MjA5NDA0MTQsImV4cCI6MTcyMzcwNTIxNH0.GbVyZ8lUyd3f3zSWzj-AuP46JHoyf1DGEPifSGhA-yc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "877"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36d-emmrTbFm/jfO6u/YQsPpQXXPF7E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jul 2024 07:02:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"669377a09fa08a7a6f623104\",\n            \"name\": \"family\",\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T07:00:48.029Z\",\n            \"updatedAt\": \"2024-07-14T07:00:48.029Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"669377989fa08a7a6f623101\",\n            \"name\": \"freeTime\",\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T07:00:40.884Z\",\n            \"updatedAt\": \"2024-07-14T07:00:40.884Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6693778a9fa08a7a6f6230fb\",\n            \"name\": \"read\",\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T07:00:26.355Z\",\n            \"updatedAt\": \"2024-07-14T07:00:26.355Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"669377939fa08a7a6f6230fe\",\n            \"name\": \"study\",\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T07:00:35.302Z\",\n            \"updatedAt\": \"2024-07-14T07:00:35.302Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"669377a69fa08a7a6f623107\",\n            \"name\": \"work\",\n            \"user_id\": \"669377669fa08a7a6f6230f2\",\n            \"createdAt\": \"2024-07-14T07:00:54.310Z\",\n            \"updatedAt\": \"2024-07-14T07:00:54.310Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "User Not LoggedIn",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-2eshYXD4VO2Fa6F+8EbF1iJrX68\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:31:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Authorization header is required\",\n    \"code\": 401,\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Category By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{tasbeeh-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/categories/6694553ffb90c2010a24f650",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								"6694553ffb90c2010a24f650"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Not LoggedIn",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/categories/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-2eshYXD4VO2Fa6F+8EbF1iJrX68\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:52:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Authorization header is required\",\n    \"code\": 401,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/categories/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-dqRPe0DsU9aWELd+pWn0o9YC0kc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:54:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Category not found or unauthorized access\",\n    \"code\": 404,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{tasbeeh-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/categories/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b4-F5Oe1U7nhuq3ALeMq5IUiB0MZ+M\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:54:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"6694553ffb90c2010a24f650\",\n        \"name\": \"Work\",\n        \"user_id\": \"669377669fa08a7a6f6230f2\",\n        \"createdAt\": \"2024-07-14T22:46:23.318Z\",\n        \"updatedAt\": \"2024-07-14T22:46:23.318Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{anas-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Study\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/categories/update/6694553ffb90c2010a24f650",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								"update",
+								"6694553ffb90c2010a24f650"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{tasbeeh-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Study\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/update/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"update",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"df-t3kYKMfok40aDdUNYOIr5gsq4Yc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:55:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Category updated successfully\",\n    \"data\": {\n        \"_id\": \"6694553ffb90c2010a24f650\",\n        \"name\": \"Study\",\n        \"user_id\": \"669377669fa08a7a6f6230f2\",\n        \"createdAt\": \"2024-07-14T22:46:23.318Z\",\n        \"updatedAt\": \"2024-07-15T00:55:47.420Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Study\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/categories/update/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"update",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-dqRPe0DsU9aWELd+pWn0o9YC0kc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:57:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Category not found or unauthorized access\",\n    \"code\": 404,\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{tasbeeh-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/categories/delete/6694553ffb90c2010a24f650",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								"delete",
+								"6694553ffb90c2010a24f650"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Not LoggedIn",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/categories/delete/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"delete",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-2eshYXD4VO2Fa6F+8EbF1iJrX68\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:57:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Authorization header is required\",\n    \"code\": 401,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{anas-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/categories/delete/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"delete",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-dqRPe0DsU9aWELd+pWn0o9YC0kc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:58:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Category not found or unauthorized access\",\n    \"code\": 404,\n    \"success\": false\n}"
+						},
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{tasbeeh-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/categories/delete/6694553ffb90c2010a24f650",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"categories",
+										"delete",
+										"6694553ffb90c2010a24f650"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-oSB9C9UJoaUkZ5Mu5gkTHkZwuV4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Jul 2024 00:58:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Category deleted successfully\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "anas-token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NTg0YzZkNGE3ZThjNmRjNjk5MSIsImVtYWlsIjoiYW5hc2lzbWFpbGxAZ21haWwuY29tIiwidG9rZW5UeXBlIjoiYWNjZXNzIiwiaWF0IjoxNzIwOTk3ODA2LCJleHAiOjE3MjM3NjI2MDZ9.p3PxDxkMdozsvgMLGIxJiZdJBt7lD1vIvr7lHRc6KPo"
+		},
+		{
+			"key": "tasbeeh-token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTM3NzY2OWZhMDhhN2E2ZjYyMzBmMiIsImVtYWlsIjoidHNiZWVoaXNtYWlsbEBnbWFpbC5jb20iLCJ0b2tlblR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3MjA5NDA0MTQsImV4cCI6MTcyMzcwNTIxNH0.GbVyZ8lUyd3f3zSWzj-AuP46JHoyf1DGEPifSGhA-yc"
+		}
+	]
+}
