@@ -5,6 +5,7 @@ A RESTful API for efficient task and category management with user authenticatio
 ## Features
 
 - **User Authentication**: Basic HTTP authentication (username and password).
+- **Email Verification**: Users can verify their email addresses.
 - **Task Management**: Create, read, update, and delete tasks.
 - **Category Management**: Organize tasks into categories with full CRUD support.
 - **Task Sharing**: Tasks can be shared (public) or private.
@@ -38,15 +39,16 @@ A RESTful API for efficient task and category management with user authenticatio
 ## Endpoints
 
 ### User
-- `POST /users`: Create a new user
+- `POST /users/signup`: Create a new user
 - `POST /users/login`: User login
+- `POST /users/verify-email`: Verify user email
 
 ### Categories
 - `GET /categories`: Get all categories
-- `POST /categories`: Create a new category
+- `POST /categories/add`: Create a new category
 - `GET /categories/:id`: Get a category by ID
-- `PATCH /categories/:id`: Update a category by ID
-- `DELETE /categories/:id`: Delete a category by ID
+- `PATCH /categories/update/:id`: Update a category by ID
+- `DELETE /categories/delete/:id`: Delete a category by ID
 
 ### Tasks
 - `GET /tasks`: Get all tasks
@@ -57,10 +59,10 @@ A RESTful API for efficient task and category management with user authenticatio
     - `shared`: Filter by shared option (`public` or `private`)
     - `sortBy`: Sort by `category` or `shared` (default: `category`)
     - `order`: Order of sorting (`asc` or `desc`, default: `asc`)
-- `POST /tasks`: Create a new task
+- `POST /tasks/create`: Create a new task
 - `GET /tasks/:id`: Get a task by ID
-- `PATCH /tasks/:id`: Update a task by ID
-- `DELETE /tasks/:id`: Delete a task by ID
+- `PATCH /tasks/update/:id`: Update a task by ID
+- `DELETE /tasks/delete/:id`: Delete a task by ID
 
 ### Filtering and Sorting
 - `GET /tasks?category=:categoryName`: Get tasks filtered by category name
