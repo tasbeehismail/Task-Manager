@@ -68,3 +68,6 @@ A RESTful API for efficient task and category management with user authenticatio
 - `GET /tasks?sortBy=category&order=asc`: Get tasks sorted by category name
 - `GET /tasks?sortBy=shared&order=desc`: Get tasks sorted by shared option (public/private)
 - `GET /tasks?page=:page&limit=:limit`: Paginate through tasks
+
+# API Documentation
+[Link to Detailed Postman Documentation](https://documenter.getpostman.com/view/34627138/2sA3kPoiux)
