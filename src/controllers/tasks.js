@@ -12,43 +12,68 @@ export const createTask = async (req, res, next) => {
 }
 
 export const getTasks = async (req, res, next) => {
-    const { page = 1, limit = 10, category, shared, sortBy = 'shared', order = 'asc' } = req.query;
-    const filter = { };
-    if (req.user) {
-        filter['$or'] = [{ user_id: req.user._id }, { shared: true }];
-      } else {
-        // If the user is unauthenticated, only show shared tasks
-        filter['shared'] = true;
-      }
-
+    const { page = 1, limit = 10, category, shared, sortBy = 'category', order = 'asc' } = req.query;
+    const filter = {};
+    
     // Apply filters
+    // 1- By task shared option (Public/Private)
+    // If user is authenticated
+    if (req.user) {
+        // show tasks created by the user and the tasks shared with the user
+        filter['$or'] = [{ user_id: req.user._id }, { shared: shared === 'true' }];
+    } else {
+        // If the user is unauthenticated, only show shared tasks
+        filter['shared'] = shared === 'true';
+    }
+
+    // 2- By category name
     if (category) {
-        const categoryDoc = await Category.findOne({ name: category });
-        if (categoryDoc) {
-            filter['category_id'] = categoryDoc._id;
+        // Find all categories that match name 
+        const categories = await Category.find({ name: { $regex: category, $options: 'i' } });
+        if (categories.length > 0) {
+            // Add the category ID to the filter
+            filter['category_id'] = { $in: categories.map(category => category._id) };  
         } else {
             return res.status(404).send({ message: 'Category not found' });
         }
     }
 
-    if (shared !== undefined) {
-        filter['shared'] = shared === 'true';
-    }
-    console.log(filter);
+    // Convert limit and page to integers
+    const pageInt = parseInt(page);
+    const limitInt = parseInt(limit);
+    const skip = (pageInt - 1) * limitInt;
 
     // Build the sort options
     const sortOptions = {};
     if (sortBy === 'category') {
-        sortOptions['category_id'] = order === 'asc' ? 1 : -1;
+        sortOptions['category.name'] = order === 'asc' ? 1 : -1;
     } else if (sortBy === 'shared') {
         sortOptions['shared'] = order === 'asc' ? 1 : -1;
     }
 
-    const tasks = await Task.find(filter)
-    .sort(sortOptions)
-    .skip((page - 1) * limit)
-    .limit(parseInt(limit))
-    .populate('category_id', 'name'); // Populating the category name for easier sorting
+    // Aggregate pipeline to sort by populated field
+    const tasks = await Task.aggregate([
+        { $match: filter },
+        { $lookup: { from: 'categories', localField: 'category_id', foreignField: '_id', as: 'category' } },
+        { $unwind: '$category' },
+        { $sort: sortOptions },
+        { $skip: skip },
+        { $limit: limitInt },
+        {
+            $project: {
+                _id: 1,
+                title: 1,
+                type: 1,
+                text_body: 1,
+                list_items: 1,
+                shared: 1,
+                user_id: 1,
+                createdAt: 1,
+                updatedAt: 1,
+                category: { name: 1, _id: 1 },
+            }
+        }
+    ]);
 
     res.status(200).json({ data: tasks });
 }
