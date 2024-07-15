@@ -100,7 +100,7 @@ export const updateTask = async (req, res, next) => {
     const { id } = req.params;
     const task = await Task.findOneAndUpdate({ _id: id, user_id }, req.body, { new: true });
     if (!task) {
-        return next(new AppError('Task not found', 404));
+        return next(new AppError('Task not found or unauthorized access', 404));
     }
     res.status(200).json({ message: 'Task updated successfully', data: task });
 }
@@ -110,7 +110,7 @@ export const deleteTask = async (req, res, next) => {
     const { id } = req.params;
     const task = await Task.findOneAndDelete({ _id: id, user_id });
     if (!task) {
-        return next(new AppError('Task not found', 404));
+        return next(new AppError('Task not found or unauthorized access', 404));
     }
     res.status(200).json({ message: 'Task deleted successfully' });
 }
